@@ -54,6 +54,7 @@ jobs:
         run: |
           ./linuxdeploy-x86_64.AppImage \
             --appdir AppDir \
+            --executable AppDir/usr/bin/jsc_cpu \
             --plugin qt \
             --desktop-file AppDir/usr/share/applications/jsc-cpu.desktop \
             --icon-file AppDir/usr/share/icons/hicolor/scalable/apps/jsc-cpu.svg \
