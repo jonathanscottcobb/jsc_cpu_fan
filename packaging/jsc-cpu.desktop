@@ -1,0 +1,12 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=JSC CPU Monitor
+GenericName=CPU & Fan Monitor
+Comment=Show CPU temperature and fan speeds in the system tray
+Exec=jsc_cpu
+Icon=jsc-cpu
+Terminal=false
+Categories=System;Monitor;Utility;
+Keywords=cpu;temperature;temp;fan;rpm;sensors;hwmon;monitor;tray;
+StartupNotify=false
