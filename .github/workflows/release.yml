@@ -37,8 +37,9 @@ jobs:
       # -------- AppImage --------
       - name: Install into AppDir
         run: |
-          DESTDIR="$PWD/AppDir" cmake --install build
-          # linuxdeploy expects usr/ at the AppDir root
+          # Install under /usr (not the default /usr/local) so linuxdeploy
+          # finds the binary, desktop file, and icon where it expects them.
+          DESTDIR="$PWD/AppDir" cmake --install build --prefix /usr
           find AppDir
 
       - name: Fetch linuxdeploy + Qt plugin
