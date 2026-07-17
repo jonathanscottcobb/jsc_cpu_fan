@@ -65,7 +65,8 @@ jobs:
         run: |
           mkdir -p dist
           cp build/*.deb dist/ || true
-          cp *.AppImage dist/ || true
+          # Only the app's AppImage, not the downloaded linuxdeploy tools.
+          cp jsc-cpu*.AppImage dist/ || true
           ls -l dist
 
       - name: Upload workflow artifacts
