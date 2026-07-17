@@ -8,6 +8,15 @@ Linux system-tray app that shows **CPU temperature** and **motherboard fan speed
 
 One tray icon is drawn per reading (each CPU core and each fan), showing a short label over a live value, e.g. `C0 / 72°`, `Ex / 2.4k`.
 
+## Tested hardware
+
+Tested on **x86-64 Apple Mac hardware running Linux**, using Linux's
+`coretemp` driver for per-core CPU temperatures and `applesmc` for fan
+speeds. The sensor discovery code also supports other Linux `hwmon` drivers
+and does not depend on Apple-specific paths.
+
+![JSC CPU Monitor showing CPU core temperatures and Exhaust fan speed in the Linux system tray](resources/screenshots/tray-monitor.png)
+
 ## Download and install
 
 Prebuilt packages are available on the
