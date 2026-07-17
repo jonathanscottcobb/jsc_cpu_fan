@@ -8,39 +8,84 @@ Linux system-tray app that shows **CPU temperature** and **motherboard fan speed
 
 One tray icon is drawn per reading (each CPU core and each fan), showing a short label over a live value, e.g. `C0 / 72°`, `Ex / 2.4k`.
 
-## Install (users)
+## Download and install
 
-The easiest options for Linux Mint / Ubuntu (MATE, Cinnamon, and other desktops):
+Prebuilt packages are available on the
+[latest release page](https://github.com/jonathanscottcobb/jsc_cpu_fan/releases/latest).
+You do not need to compile the source code.
 
-### Debian package (.deb)
+### Linux Mint, Ubuntu, Debian and derivatives (recommended)
 
-Download the latest `jsc-cpu_*.deb` from the [Releases page](https://github.com/jonathanscottcobb/jsc_cpu_fan/releases), then:
+1. Open the [latest release](https://github.com/jonathanscottcobb/jsc_cpu_fan/releases/latest).
+2. Under **Assets**, download the file ending in `_amd64.deb`.
+3. Open a terminal in your Downloads folder and install it:
+
+   ```bash
+   cd ~/Downloads
+   sudo apt install ./jsc-cpu_*_amd64.deb
+   ```
+
+   Using `apt` installs the required Qt libraries automatically. You can also
+   double-click the `.deb` and install it with your distribution's software
+   installer.
+
+4. Open your application menu and launch **JSC CPU Monitor**. It can also be
+   started from a terminal:
+
+   ```bash
+   jsc_cpu
+   ```
+
+The monitor runs in the system tray. One icon appears for each detected CPU
+core and fan. Right-click any icon for **Show details**, **Refresh now**, or
+**Quit**.
+
+To uninstall:
 
 ```bash
-sudo apt install ./jsc-cpu_*.deb
+sudo apt remove jsc-cpu
 ```
 
-This installs `/usr/bin/jsc_cpu`, a menu entry (JSC CPU Monitor), and the app icon. Launch it from your applications menu or run `jsc_cpu`.
+### Other Linux distributions (portable AppImage)
 
-### AppImage (any distro, no install)
+The AppImage bundles Qt and does not need to be installed:
 
-Download `jsc-cpu-x86_64.AppImage` from Releases, then:
+1. Open the [latest release](https://github.com/jonathanscottcobb/jsc_cpu_fan/releases/latest).
+2. Under **Assets**, download `jsc-cpu-x86_64.AppImage`.
+3. Make it executable and run it:
 
-```bash
-chmod +x jsc-cpu-x86_64.AppImage
-./jsc-cpu-x86_64.AppImage
-```
+   ```bash
+   cd ~/Downloads
+   chmod +x jsc-cpu-x86_64.AppImage
+   ./jsc-cpu-x86_64.AppImage
+   ```
 
-### Start automatically on login
+You can move the AppImage to a permanent location such as
+`~/Applications/` before running it.
 
-After installing the `.deb`, enable autostart with:
+### Start automatically when you log in
+
+For the `.deb` installation:
 
 ```bash
 mkdir -p ~/.config/autostart
 cp /usr/share/applications/jsc-cpu.desktop ~/.config/autostart/
 ```
 
-(For the AppImage, copy it somewhere stable and create a `~/.config/autostart/jsc-cpu.desktop` whose `Exec=` points at it.)
+For the AppImage, use your desktop's **Startup Applications** settings and
+select the AppImage from its permanent location.
+
+### If no sensors appear
+
+Check whether Linux can see your hardware sensors:
+
+```bash
+sensors
+```
+
+On Debian-based distributions, install the diagnostic utility with
+`sudo apt install lm-sensors`. The application itself reads Linux's `hwmon`
+interface directly and does not require administrator privileges.
 
 ## Requirements (building from source)
 
